@@ -5,11 +5,10 @@ import re
 from unidecode import unidecode
 from random import randint
 
-
 class Model:
     
     @classmethod
-    def set_artist(cls, artist):
+    def set_artist(cls, artist='eminem'):
         cls.model = load_model('./models/word_model_{}.h5'.format(artist))
         songs = pd.read_csv('./data/{}-lyrics.csv'.format(artist.replace('_', '-')))
         all_lyric_lines = Model.get_tokenized_lines(songs)

@@ -10,16 +10,16 @@ def test():
 
 @app.route('/', methods = ['POST'])
 def generate_lyrics():
-    # try:
-    data = request.get_json()
-    usr_input = data.get('text')
-    artist = data.get('artist')
-    n_words=50
-    seq_length = 50
-    generated_lyrics = Model.generate_seq(artist, usr_input, seq_length, n_words)
-    return { 'generated_lyrics' : generated_lyrics }
-    # except:
-    #     return { 'message' : 'Error' }, 500
+    try:
+        data = request.get_json()
+        usr_input = data.get('text')
+        artist = data.get('artist')
+        n_words=50
+        seq_length = 50
+        generated_lyrics = Model.generate_seq(artist, usr_input, seq_length, n_words)
+        return { 'generated_lyrics' : generated_lyrics }
+    except:
+        return { 'message' : 'There was an error generating lyrics' }, 500
 
 
 if (__name__ == '__main__'):
