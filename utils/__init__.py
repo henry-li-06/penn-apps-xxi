@@ -49,7 +49,7 @@ class Model:
         return seq[:, start: start + maxlen]
 
     @classmethod
-    def generate_seq(cls, artist, usr_input, seq_length, n_words):
+    def generate_seq(cls, artist, usr_input, seq_length=50, n_words=50):
         cls.set_artist(artist)
         generated = ''
         
