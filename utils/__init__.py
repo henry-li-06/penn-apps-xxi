@@ -5,7 +5,7 @@ import re
 from unidecode import unidecode
 from random import randint
 
-model = load_model('./word_model_eminem_epoch_2.h5')
+model = load_model('./word_model_travis_scott.h5')
 
 
 def get_tokenized_lines(df):
