@@ -19,7 +19,7 @@ def get_tokenized_lines(df):
         
     return words
 
-songs = pd.read_csv('./data/eminem-lyrics.csv')
+songs = pd.read_csv('./data/travis-scott-lyrics.csv')
 all_lyric_lines = get_tokenized_lines(songs)
 vocab = set(all_lyric_lines)
 vocab = sorted(vocab)
