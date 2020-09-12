@@ -1,9 +1,7 @@
 from flask import Flask, request
-from utils import *
+from utils import Model
 
 app = Flask(__name__)
-
-songs = pd.read_csv('data/eminem-lyrics.csv')
 
 @app.route('/test')
 def test():
@@ -15,9 +13,10 @@ def generate_lyrics():
     # try:
     data = request.get_json()
     usr_input = data.get('text')
+    artist = data.get('artist')
     n_words=50
     seq_length = 50
-    generated_lyrics = generate_seq(usr_input, seq_length, n_words)
+    generated_lyrics = Model.generate_seq(artist, usr_input, seq_length, n_words)
     return { 'generated_lyrics' : generated_lyrics }
     # except:
     #     return { 'message' : 'Error' }, 500
