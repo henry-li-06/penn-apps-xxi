@@ -10,7 +10,7 @@ class Model:
     
     @classmethod
     def set_artist(cls, artist):
-        cls.model = load_model('./word_model_{}.h5'.format(artist))
+        cls.model = load_model('./models/word_model_{}.h5'.format(artist))
         songs = pd.read_csv('./data/{}-lyrics.csv'.format(artist.replace('_', '-')))
         all_lyric_lines = Model.get_tokenized_lines(songs)
         vocab = set(all_lyric_lines)
