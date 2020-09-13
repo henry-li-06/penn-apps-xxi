@@ -17,9 +17,6 @@ class Model:
         cls.word_to_index = {w: i for i, w in enumerate(vocab)}
         cls.index_to_word = {i: w for w, i in cls.word_to_index.items()}
         cls.vocab_size = len(vocab)
-        with open('log.txt', 'w') as file:
-            file.write(str(cls.vocab_size) + '\n')
-            file.write(str(len(cls.index_to_word.keys())))
 
     @staticmethod
     def get_tokenized_lines(df):
@@ -63,12 +60,9 @@ class Model:
         # if input is shorter than 51 words, fill the beginning with random words
         if(len(generated_list) < 51):
             end = len(generated_list)
-            with open('log.txt', 'a') as file:
-                file.write(str(cls.index_to_word.keys()))
+
             for i in range (51 - end):
                 random = cls.index_to_word[randint(0,cls.vocab_size - 1)]
-                with open('log.txt', 'a') as file:
-                    file.write(str(random) + '\n')
                 in_text[i] = random
                 
             index = 0
