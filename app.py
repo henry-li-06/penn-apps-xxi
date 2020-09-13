@@ -11,15 +11,10 @@ def generate_lyrics():
         data = request.get_json()
         usr_input = data.get('text')
         artist = data.get('rapper')
-        for _ in range(MAX_ATTEMPTS):
-            try:
-                generated_lyrics = Model.generate_seq(artist, usr_input)
-                return { 'generated_lyrics' : generated_lyrics }
-            except:
-                pass
+        generated_lyrics = Model.generate_seq(artist, usr_input)
+        return { 'generated_lyrics' : generated_lyrics }
     except:
         return { 'message' : 'There was an error generating lyrics' }, 500
-
 
 if (__name__ == '__main__'):
     app.run()
