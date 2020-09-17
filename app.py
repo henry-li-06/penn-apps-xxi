@@ -1,9 +1,7 @@
 from flask import Flask, request
-from utils import Model
+from model.model import Model
 
 app = Flask(__name__)
-
-MAX_ATTEMPTS = 10
 
 @app.route('/', methods = ['POST'])
 def generate_lyrics():
